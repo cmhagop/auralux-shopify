@@ -31,15 +31,90 @@
       padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     }
 
-    .aura-lux-product__info-container {
-      padding-left: 0;
+    /* Product Info Container */
+    .product__info-container {
+      padding-top: 2rem;
     }
 
-    .aura-lux-product__title {
-      font-size: calc(var(--font-heading-scale) * 3.5rem);
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.02rem;
-      text-transform: capitalize;
+    /* Product Title */
+    .product__title h1,
+    .product__title .h1 {
+      font-size: calc(var(--font-heading-scale) * 3.2rem);
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    /* Product Price */
+    .price__container {
+      margin-top: 0.8rem;
+    }
+    .price-item--regular,
+    .price-item--sale {
+      font-family: var(--font-heading-family);
+      font-size: 2.2rem;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+    }
+
+    /* Variant Picker */
+    .product-form__input label {
+      font-size: 1.1rem;
+      letter-spacing: 0.3rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      opacity: 0.5;
+      margin-bottom: 1rem;
+    }
+
+    /* Buy Button */
+    .product-form__buttons .button {
+      padding: 1.6rem 4rem;
+      font-size: 1.2rem;
+      letter-spacing: 0.25rem;
+      min-height: 5.4rem;
+    }
+
+    .shopify-payment-button .shopify-payment-button__button--unbranded {
+      padding: 1.6rem 4rem;
+      font-size: 1.2rem;
+      letter-spacing: 0.25rem;
+      min-height: 5.4rem;
+    }
+
+    /* Collapsible Tabs / Accordion */
+    .product__accordion .accordion__title {
+      font-family: var(--font-body-family);
+      font-size: 1.2rem;
+      letter-spacing: 0.25rem;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .product__accordion summary {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      border-top: 1px solid rgba(var(--color-foreground), 0.06);
+    }
+
+    .product__accordion .accordion__content {
+      font-size: 1.45rem;
+      line-height: 1.85;
+      opacity: 0.7;
+    }
+
+    /* Description */
+    .product__description {
+      font-size: 1.55rem;
+      line-height: 1.85;
+      opacity: 0.75;
+      margin-top: 2rem;
+    }
+
+    /* Quantity */
+    .quantity__input {
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
     }
 
     @media screen and (min-width: 750px) {
@@ -47,8 +122,16 @@
         padding-top: {{ section.settings.padding_top }}px;
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
-      .aura-lux-product__info-container {
-        padding-left: 5rem;
+      .product__info-container {
+        padding-left: 6rem;
+      }
+      .product__title h1,
+      .product__title .h1 {
+        font-size: calc(var(--font-heading-scale) * 4rem);
+      }
+      .price-item--regular,
+      .price-item--sale {
+        font-size: 2.6rem;
       }
     }
   {%- endstyle -%}

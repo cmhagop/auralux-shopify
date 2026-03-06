@@ -242,22 +242,24 @@
         grid-template-columns: 100%;
         min-height: 100%;
         margin: 0;
-        font-size: 1.5rem;
-        letter-spacing: 0.04rem;
-        line-height: 1.6;
+        font-size: 1.55rem;
+        letter-spacing: 0.02em;
+        line-height: 1.8;
         font-family: var(--font-body-family);
         font-style: var(--font-body-style);
         font-weight: var(--font-body-weight);
         background-color: rgb(var(--color-background));
         color: rgb(var(--color-foreground));
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
       h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4 {
         font-family: var(--font-heading-family);
         font-style: var(--font-heading-style);
         font-weight: var(--font-heading-weight);
-        letter-spacing: -0.02rem;
-        line-height: 1.2;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
         margin-top: 0;
         color: rgb(var(--color-foreground));
         text-transform: capitalize;
@@ -265,24 +267,77 @@
 
       .button, .shopify-payment-button__button--unbranded {
         text-transform: uppercase;
-        letter-spacing: 0.1rem;
+        letter-spacing: 0.2rem;
         font-weight: 500;
-        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        font-size: 1.2rem;
+        padding: 1.4rem 3.6rem;
+        transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        border: 1px solid currentColor;
+        background: transparent;
+        color: inherit;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
       }
 
-      .button:hover {
-        background-color: rgb(var(--color-accent));
+      .button::after, .shopify-payment-button__button--unbranded::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: currentColor;
+        z-index: -1;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      .button:hover::after, .shopify-payment-button__button--unbranded:hover::after {
+        transform: scaleY(1);
+      }
+
+      .button:hover, .shopify-payment-button__button--unbranded:hover {
+        color: rgb(var(--color-background));
+        border-color: transparent;
+      }
+
+      .button--primary {
+        background-color: #1A1A1A;
         color: #FFFFFF;
-        border-color: rgb(var(--color-accent));
+        border-color: #1A1A1A;
+      }
+
+      .button--primary::after {
+        background-color: #FFFFFF;
+      }
+
+      .button--primary:hover {
+        color: #1A1A1A;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: opacity 0.3s ease, color 0.3s ease;
       }
 
       a:hover {
-        color: rgb(var(--color-accent));
+        opacity: 0.7;
+      }
+
+      .caption-with-letter-spacing {
+        letter-spacing: 0.3rem;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        font-weight: 600;
+        opacity: 0.6;
       }
 
       @media screen and (min-width: 750px) {
         body {
-          font-size: 1.6rem;
+          font-size: 1.65rem;
         }
       }
 

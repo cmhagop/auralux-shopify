@@ -16,13 +16,41 @@
     visibility: hidden;
   }
   .cart-drawer .drawer__inner {
-    border-left: 1px solid rgba(var(--color-foreground), 0.05);
+    border-left: 1px solid rgba(var(--color-foreground), 0.06);
+    background-color: rgb(var(--color-background));
   }
   .drawer__heading {
-    letter-spacing: 0.2rem;
+    font-family: var(--font-body-family);
+    letter-spacing: 0.4rem;
     text-transform: uppercase;
-    font-size: 1.4rem;
-    font-weight: 500;
+    font-size: 1.2rem;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+  .cart-item__name {
+    font-family: var(--font-heading-family);
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+  .cart-item__price-wrapper .price {
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+  }
+  .totals {
+    border-top: 1px solid rgba(var(--color-foreground), 0.06);
+    padding-top: 2rem;
+  }
+  .totals__total-value {
+    font-family: var(--font-heading-family);
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+  }
+  .cart-drawer .button {
+    letter-spacing: 0.25rem;
+  }
+  .cart-drawer__overlay {
+    background-color: rgba(0, 0, 0, 0.4);
   }
 </style>
 

@@ -2,59 +2,82 @@
   .aura-lux-trust-{{ section.id }} {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-    background-color: #f2f2f0; /* Warm subtle grey */
-    border-top: 1px solid rgba(var(--color-foreground), 0.05);
-    border-bottom: 1px solid rgba(var(--color-foreground), 0.05);
+    background-color: rgb(var(--color-background));
   }
 
-  .aura-lux-trust__grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 4rem;
-    text-align: center;
+  .aura-lux-trust__inner {
+    max-width: 110rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(var(--color-foreground), 0.08);
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
   }
 
   .aura-lux-trust__item {
-    flex: 1 1 20rem;
-    max-width: 30rem;
-    padding: 2rem;
+    padding: 5rem 4rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .aura-lux-trust__item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: rgba(var(--color-foreground), 0.08);
   }
 
   .aura-lux-trust__icon {
-    width: 4rem;
-    height: 4rem;
-    margin: 0 auto 2rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: 0 auto 2.5rem;
     color: rgb(var(--color-accent));
+    opacity: 0.8;
   }
 
   .aura-lux-trust__heading {
-    font-size: 1.4rem;
-    letter-spacing: 0.1rem;
+    font-family: var(--font-heading-family);
+    font-size: 1.2rem;
+    letter-spacing: 0.35rem;
     text-transform: uppercase;
-    margin-bottom: 1rem;
-    font-weight: 600;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+    color: rgb(var(--color-foreground));
   }
 
   .aura-lux-trust__text {
-    font-size: 1.4rem;
-    opacity: 0.7;
-    line-height: 1.5;
+    font-size: 1.35rem;
+    opacity: 0.55;
+    line-height: 1.7;
+    max-width: 28rem;
+    margin: 0 auto;
   }
 
   @media screen and (max-width: 749px) {
-    .aura-lux-trust__grid {
-      flex-direction: column;
-      align-items: center;
-      gap: 3rem;
+    .aura-lux-trust__inner {
+      grid-template-columns: 1fr;
+    }
+    .aura-lux-trust__item:not(:last-child)::after {
+      right: 15%;
+      top: auto;
+      bottom: 0;
+      height: 1px;
+      width: 70%;
+      background: rgba(var(--color-foreground), 0.06);
+    }
+    .aura-lux-trust__item {
+      padding: 3.5rem 2rem;
     }
   }
 {%- endstyle -%}
 
 <section class="aura-lux-trust-{{ section.id }}">
   <div class="page-width">
-    <div class="aura-lux-trust__grid">
-      
+    <div class="aura-lux-trust__inner">
       {%- for block in section.blocks -%}
         <div class="aura-lux-trust__item" {{ block.shopify_attributes }}>
           {%- if block.settings.icon_svg != blank -%}
@@ -69,7 +92,6 @@
           <p class="aura-lux-trust__text">{{ block.settings.text | escape }}</p>
         </div>
       {%- endfor -%}
-
     </div>
   </div>
 </section>

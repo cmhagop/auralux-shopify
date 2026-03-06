@@ -7,20 +7,35 @@
 
   .aura-lux-faq__header {
     text-align: center;
-    margin-bottom: 6rem;
+    margin-bottom: 8rem;
+  }
+
+  .aura-lux-faq__label {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    font-size: 1.1rem;
+    color: rgb(var(--color-accent));
+    margin-bottom: 2rem;
+    font-weight: 600;
   }
 
   .aura-lux-faq__heading {
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    letter-spacing: -0.03em;
   }
 
   .aura-lux-faq__container {
-    max-width: 80rem;
+    max-width: 75rem;
     margin: 0 auto;
   }
 
   .aura-lux-faq__item {
-    border-bottom: 1px solid rgba(var(--color-foreground), 0.1);
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.06);
+  }
+
+  .aura-lux-faq__item:first-child {
+    border-top: 1px solid rgba(var(--color-foreground), 0.06);
   }
 
   .aura-lux-faq__question {
@@ -28,26 +43,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2.5rem 0;
+    padding: 3rem 0;
     background: none;
     border: none;
     cursor: pointer;
     text-align: left;
-    font-family: var(--font-heading-family);
-    font-size: 1.8rem;
+    font-family: var(--font-body-family);
+    font-size: 1.55rem;
+    letter-spacing: 0.02em;
     color: rgb(var(--color-foreground));
-    transition: color 0.3s ease;
+    transition: opacity 0.3s ease;
+    font-weight: 500;
   }
 
   .aura-lux-faq__question:hover {
-    color: rgb(var(--color-accent));
+    opacity: 0.6;
   }
 
   .aura-lux-faq__icon {
-    width: 1.2rem;
-    height: 1.2rem;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    opacity: 0.5;
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    opacity: 0.35;
+    flex-shrink: 0;
+    margin-left: 2rem;
   }
 
   .aura-lux-faq__item[open] .aura-lux-faq__icon {
@@ -55,23 +74,24 @@
   }
 
   .aura-lux-faq__answer {
-    padding-bottom: 3rem;
-    font-size: 1.6rem;
-    line-height: 1.8;
-    opacity: 0.75;
-    animation: slideDown 0.4s ease-out;
+    padding-bottom: 3.5rem;
+    font-size: 1.5rem;
+    line-height: 1.9;
+    opacity: 0.65;
+    max-width: 60rem;
+    animation: faqSlideDown 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
-  @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+  @keyframes faqSlideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 0.65; transform: translateY(0); }
   }
 {%- endstyle -%}
 
 <section class="aura-lux-faq-{{ section.id }}">
   <div class="page-width">
     <div class="aura-lux-faq__header">
-       <span class="aura-lux-story__label">Common Inquiries</span>
+       <span class="aura-lux-faq__label">Common Inquiries</span>
        <h2 class="aura-lux-faq__heading h1">{{ section.settings.heading | escape }}</h2>
     </div>
 
