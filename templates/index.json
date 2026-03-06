@@ -1,0 +1,52 @@
+{
+  "sections": {
+    "aura_lux_hero": {
+      "type": "aura-lux-hero",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "aura_lux_story": {
+      "type": "aura-lux-story",
+      "settings": {
+        "heading": "The Aura Philosophy",
+        "text": "<p>Aura Lux represents the intersection of timeless craftsmanship and modern minimalism. Every piece is a testament to the beauty of silence.<\/p>",
+        "layout": "image_first"
+      }
+    },
+    "featured_product": {
+      "type": "featured-product",
+      "settings": {
+        "product": "",
+        "color_scheme": "scheme-1",
+        "hide_variants_if_only_one": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "aura_lux_trust": {
+      "type": "aura-lux-trust",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "aura_lux_faq": {
+      "type": "aura-lux-faq",
+      "settings": {
+        "heading": "The Fine Details",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "aura_lux_hero",
+    "aura_lux_story",
+    "featured_product",
+    "aura_lux_trust",
+    "aura_lux_faq"
+  ]
+}
+

@@ -1,0 +1,156 @@
+{%- style -%}
+  .aura-lux-faq-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: rgb(var(--color-background));
+  }
+
+  .aura-lux-faq__header {
+    text-align: center;
+    margin-bottom: 6rem;
+  }
+
+  .aura-lux-faq__heading {
+    margin-bottom: 2rem;
+  }
+
+  .aura-lux-faq__container {
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  .aura-lux-faq__item {
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.1);
+  }
+
+  .aura-lux-faq__question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-heading-family);
+    font-size: 1.8rem;
+    color: rgb(var(--color-foreground));
+    transition: color 0.3s ease;
+  }
+
+  .aura-lux-faq__question:hover {
+    color: rgb(var(--color-accent));
+  }
+
+  .aura-lux-faq__icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    opacity: 0.5;
+  }
+
+  .aura-lux-faq__item[open] .aura-lux-faq__icon {
+    transform: rotate(180deg);
+  }
+
+  .aura-lux-faq__answer {
+    padding-bottom: 3rem;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    opacity: 0.75;
+    animation: slideDown 0.4s ease-out;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+{%- endstyle -%}
+
+<section class="aura-lux-faq-{{ section.id }}">
+  <div class="page-width">
+    <div class="aura-lux-faq__header">
+       <span class="aura-lux-story__label">Common Inquiries</span>
+       <h2 class="aura-lux-faq__heading h1">{{ section.settings.heading | escape }}</h2>
+    </div>
+
+    <div class="aura-lux-faq__container">
+      {%- for block in section.blocks -%}
+        <details class="aura-lux-faq__item" {{ block.shopify_attributes }}>
+          <summary class="aura-lux-faq__question">
+            <span>{{ block.settings.question | escape }}</span>
+            <span class="aura-lux-faq__icon">{% render 'icon-caret' %}</span>
+          </summary>
+          <div class="aura-lux-faq__answer">
+            {{ block.settings.answer }}
+          </div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Aura Lux FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Elegance Explained"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How do I determine my ring size?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>We offer a complimentary sizing kit for all orders. Alternatively, you can visit our sizing guide for detailed instructions on measuring at home.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aura Lux FAQ",
+      "blocks": [
+        { "type": "faq_item" },
+        { "type": "faq_item", "settings": { "question": "What is the delivery timeline?", "answer": "<p>Each piece is handcrafted to order. Standard delivery takes 2-4 weeks, ensuring the highest level of detail for your Aura Ring.</p>" } },
+        { "type": "faq_item", "settings": { "question": "Are your materials ethically sourced?", "answer": "<p>Sustainability is at the core of Aura Lux. We use 100% recycled precious metals and conflict-free diamonds certified by the Kimberley Process.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
