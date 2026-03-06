@@ -125,6 +125,11 @@
           {{ section.settings.button_label | escape }}
         </a>
       {%- endif -%}
+      {%- if section.settings.button_label_2 != blank -%}
+        <a href="{{ section.settings.button_link_2 }}" class="button button--secondary button--large">
+          {{ section.settings.button_label_2 | escape }}
+        </a>
+      {%- endif -%}
     </div>
   </div>
 </section>
@@ -159,6 +164,10 @@
       "default": "<p>Experience the embrace of timeless elegance with the Aura Ring—a masterpiece designed for those who value sophistication over noise.</p>"
     },
     {
+      "type": "header",
+      "content": "Primary Button"
+    },
+    {
       "type": "text",
       "id": "button_label",
       "label": "Button Label",
@@ -168,6 +177,20 @@
       "type": "url",
       "id": "button_link",
       "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Secondary Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Secondary Link"
     },
     {
       "type": "color_scheme",
