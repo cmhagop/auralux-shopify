@@ -21,7 +21,7 @@
       "type": "featured-product",
       "settings": {
         "product": "",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
         "hide_variants_if_only_one": true,
         "padding_top": 100,
         "padding_bottom": 100

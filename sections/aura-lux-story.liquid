@@ -1,147 +1,165 @@
 {%- style -%}
-  .aura-lux-story-{{ section.id }} {
+  .aura-story {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-    background-color: rgb(var(--color-background));
+    background-color: #111111;
+    color: #F5F5F0;
+    position: relative;
+    overflow: hidden;
   }
 
-  .aura-lux-story__grid {
+  .aura-story::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.15), transparent);
+  }
+
+  .aura-story__grid {
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
-    gap: 8rem;
+    gap: 6rem;
   }
 
-  .aura-lux-story__item {
-    position: relative;
-    overflow: visible;
+  .aura-story__content {
+    max-width: 50rem;
   }
 
-  .aura-lux-story__content {
-    max-width: 55rem;
-  }
-
-  .aura-lux-story__label {
+  .aura-story__label {
     display: block;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
-    font-size: 1.1rem;
-    color: rgb(var(--color-accent));
+    font-size: 1rem;
+    color: #C5A059;
     margin-bottom: 2.5rem;
     font-weight: 600;
   }
 
-  .aura-lux-story__heading {
+  .aura-story__heading {
     margin-bottom: 3.5rem;
-    font-size: calc(var(--font-heading-scale) * 4.2rem);
+    font-size: calc(var(--font-heading-scale) * 3.8rem);
     letter-spacing: -0.04em;
     line-height: 1.1;
+    color: #F5F5F0;
   }
 
-  .aura-lux-story__text {
-    font-size: 1.8rem;
+  .aura-story__text {
+    font-size: 1.7rem;
     line-height: 1.9;
-    opacity: 0.8;
-    margin-bottom: 5rem;
+    color: rgba(245, 245, 240, 0.6);
+    margin-bottom: 4.5rem;
     font-weight: 400;
   }
 
-  .aura-lux-story__image-wrap {
-    position: relative;
-    padding: 2rem;
+  .aura-story__cta.button {
+    border-color: rgba(245, 245, 240, 0.2);
+    color: #F5F5F0;
   }
 
-  .aura-lux-story__image-wrap::before {
+  .aura-story__cta.button::after {
+    background-color: #F5F5F0;
+  }
+
+  .aura-story__cta.button:hover {
+    color: #111111;
+  }
+
+  .aura-story__image-wrap {
+    position: relative;
+  }
+
+  .aura-story__image-frame {
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(197, 160, 89, 0.08);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  .aura-story__image-frame::after {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 105%;
-    height: 105%;
-    background: #F2F2F0;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    border: 1px solid rgba(0,0,0,0.03);
+    inset: 0;
+    background: linear-gradient(135deg, rgba(13, 13, 13, 0.1), transparent 50%, rgba(13, 13, 13, 0.15));
+    z-index: 1;
+    pointer-events: none;
   }
 
-  .aura-lux-story__image {
+  .aura-story__image {
     width: 100%;
     height: auto;
+    display: block;
     object-fit: cover;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    aspect-ratio: 4 / 5;
+    transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
-  .aura-lux-story__item:hover .aura-lux-story__image {
-    transform: scale(1.02);
+  .aura-story__image-wrap:hover .aura-story__image {
+    transform: scale(1.03);
   }
 
   @media screen and (min-width: 990px) {
-    .aura-lux-story__grid {
-      grid-template-columns: 4fr 6fr;
+    .aura-story__grid {
+      grid-template-columns: 5fr 6fr;
+      gap: 8rem;
     }
-    .aura-lux-story__grid--reverse {
-      grid-template-columns: 6fr 4fr;
+    .aura-story__grid--reverse {
+      grid-template-columns: 6fr 5fr;
     }
-    .aura-lux-story__grid--reverse .aura-lux-story__content-wrap {
+    .aura-story__grid--reverse .aura-story__content-wrap {
       order: 2;
     }
-    .aura-lux-story__grid--reverse .aura-lux-story__image-wrap {
+    .aura-story__grid--reverse .aura-story__image-wrap {
       order: 1;
     }
-    .aura-lux-story__content {
-      margin-left: auto;
-    }
-    .aura-lux-story__grid--reverse .aura-lux-story__content {
-      margin-left: 0;
-      margin-right: auto;
+    .aura-story__heading {
+      font-size: calc(var(--font-heading-scale) * 4.5rem);
     }
   }
 
   @media screen and (max-width: 749px) {
-    .aura-lux-story__grid {
-      gap: 6rem;
-    }
-    .aura-lux-story__image-wrap {
-      padding: 0;
-    }
-    .aura-lux-story__image-wrap::before {
-      display: none;
+    .aura-story__image {
+      aspect-ratio: 3 / 4;
     }
   }
 {%- endstyle -%}
 
-<section class="aura-lux-story-{{ section.id }} isolation-blend">
+<section class="aura-story">
   <div class="page-width">
-    <div class="aura-lux-story__grid {% if section.settings.layout == 'text_first' %} aura-lux-story__grid--reverse{% endif %}">
-      
-      <div class="aura-lux-story__item aura-lux-story__content-wrap">
-        <div class="aura-lux-story__content">
+    <div class="aura-story__grid {% if section.settings.layout == 'text_first' %} aura-story__grid--reverse{% endif %}">
+
+      <div class="aura-story__item aura-story__content-wrap">
+        <div class="aura-story__content">
           {%- if section.settings.subheading != blank -%}
-            <span class="aura-lux-story__label">{{ section.settings.subheading | escape }}</span>
+            <span class="aura-story__label">{{ section.settings.subheading | escape }}</span>
           {%- endif -%}
-          
-          <h2 class="aura-lux-story__heading h1">{{ section.settings.heading | escape }}</h2>
-          
-          <div class="aura-lux-story__text">{{ section.settings.text }}</div>
-          
+
+          <h2 class="aura-story__heading h1">{{ section.settings.heading | escape }}</h2>
+
+          <div class="aura-story__text">{{ section.settings.text }}</div>
+
           {%- if section.settings.button_label != blank -%}
-            <a href="{{ section.settings.button_link }}" class="button">
+            <a href="{{ section.settings.button_link }}" class="button aura-story__cta">
               {{ section.settings.button_label | escape }}
             </a>
           {%- endif -%}
         </div>
       </div>
 
-      <div class="aura-lux-story__item aura-lux-story__image-wrap">
-        {%- if section.settings.image != blank -%}
-          {{ section.settings.image | image_url: width: 1500 | image_tag: 
-            class: 'aura-lux-story__image',
-            loading: 'lazy'
-          }}
-        {%- else -%}
-          {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-        {%- endif -%}
+      <div class="aura-story__item aura-story__image-wrap">
+        <div class="aura-story__image-frame">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings.image | image_url: width: 1500 | image_tag:
+              class: 'aura-story__image',
+              loading: 'lazy'
+            }}
+          {%- else -%}
+            {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
       </div>
 
     </div>
@@ -204,7 +222,7 @@
       "step": 4,
       "unit": "px",
       "label": "Top Padding",
-      "default": 80
+      "default": 100
     },
     {
       "type": "range",
@@ -214,7 +232,7 @@
       "step": 4,
       "unit": "px",
       "label": "Bottom Padding",
-      "default": 80
+      "default": 100
     }
   ],
   "presets": [

@@ -1,44 +1,57 @@
 {%- style -%}
-  .aura-lux-faq-{{ section.id }} {
+  .aura-faq {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-    background-color: rgb(var(--color-background));
+    background-color: #111111;
+    color: #F5F5F0;
+    position: relative;
   }
 
-  .aura-lux-faq__header {
+  .aura-faq::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.12), transparent);
+  }
+
+  .aura-faq__header {
     text-align: center;
     margin-bottom: 8rem;
   }
 
-  .aura-lux-faq__label {
+  .aura-faq__label {
     display: block;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
-    font-size: 1.1rem;
-    color: rgb(var(--color-accent));
+    font-size: 1rem;
+    color: #C5A059;
     margin-bottom: 2rem;
     font-weight: 600;
   }
 
-  .aura-lux-faq__heading {
+  .aura-faq__heading {
     margin-bottom: 0;
     letter-spacing: -0.03em;
+    color: #F5F5F0;
   }
 
-  .aura-lux-faq__container {
+  .aura-faq__container {
     max-width: 75rem;
     margin: 0 auto;
   }
 
-  .aura-lux-faq__item {
-    border-bottom: 1px solid rgba(var(--color-foreground), 0.06);
+  .aura-faq__item {
+    border-bottom: 1px solid rgba(245, 245, 240, 0.05);
   }
 
-  .aura-lux-faq__item:first-child {
-    border-top: 1px solid rgba(var(--color-foreground), 0.06);
+  .aura-faq__item:first-child {
+    border-top: 1px solid rgba(245, 245, 240, 0.05);
   }
 
-  .aura-lux-faq__question {
+  .aura-faq__question {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -51,58 +64,59 @@
     font-family: var(--font-body-family);
     font-size: 1.55rem;
     letter-spacing: 0.02em;
-    color: rgb(var(--color-foreground));
+    color: #F5F5F0;
     transition: opacity 0.3s ease;
     font-weight: 500;
   }
 
-  .aura-lux-faq__question:hover {
+  .aura-faq__question:hover {
     opacity: 0.6;
   }
 
-  .aura-lux-faq__icon {
+  .aura-faq__icon {
     width: 1rem;
     height: 1rem;
     transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    opacity: 0.35;
+    opacity: 0.3;
     flex-shrink: 0;
     margin-left: 2rem;
+    color: #C5A059;
   }
 
-  .aura-lux-faq__item[open] .aura-lux-faq__icon {
+  .aura-faq__item[open] .aura-faq__icon {
     transform: rotate(180deg);
   }
 
-  .aura-lux-faq__answer {
+  .aura-faq__answer {
     padding-bottom: 3.5rem;
     font-size: 1.5rem;
     line-height: 1.9;
-    opacity: 0.65;
+    color: rgba(245, 245, 240, 0.5);
     max-width: 60rem;
-    animation: faqSlideDown 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    animation: faqReveal 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
-  @keyframes faqSlideDown {
+  @keyframes faqReveal {
     from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 0.65; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
   }
 {%- endstyle -%}
 
-<section class="aura-lux-faq-{{ section.id }}">
+<section class="aura-faq">
   <div class="page-width">
-    <div class="aura-lux-faq__header">
-       <span class="aura-lux-faq__label">Common Inquiries</span>
-       <h2 class="aura-lux-faq__heading h1">{{ section.settings.heading | escape }}</h2>
+    <div class="aura-faq__header">
+       <span class="aura-faq__label">Common Inquiries</span>
+       <h2 class="aura-faq__heading h1">{{ section.settings.heading | escape }}</h2>
     </div>
 
-    <div class="aura-lux-faq__container">
+    <div class="aura-faq__container">
       {%- for block in section.blocks -%}
-        <details class="aura-lux-faq__item" {{ block.shopify_attributes }}>
-          <summary class="aura-lux-faq__question">
+        <details class="aura-faq__item" {{ block.shopify_attributes }}>
+          <summary class="aura-faq__question">
             <span>{{ block.settings.question | escape }}</span>
-            <span class="aura-lux-faq__icon">{% render 'icon-caret' %}</span>
+            <span class="aura-faq__icon">{% render 'icon-caret' %}</span>
           </summary>
-          <div class="aura-lux-faq__answer">
+          <div class="aura-faq__answer">
             {{ block.settings.answer }}
           </div>
         </details>

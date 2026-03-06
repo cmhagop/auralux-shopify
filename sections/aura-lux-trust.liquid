@@ -1,95 +1,107 @@
 {%- style -%}
-  .aura-lux-trust-{{ section.id }} {
+  .aura-trust {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-    background-color: rgb(var(--color-background));
+    background-color: #0A0A0A;
+    color: #F5F5F0;
+    position: relative;
   }
 
-  .aura-lux-trust__inner {
+  .aura-trust::before,
+  .aura-trust::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.12), transparent);
+  }
+  .aura-trust::before { top: 0; }
+  .aura-trust::after { bottom: 0; }
+
+  .aura-trust__inner {
     max-width: 110rem;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0;
-    border-top: 1px solid rgba(var(--color-foreground), 0.08);
-    border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
   }
 
-  .aura-lux-trust__item {
+  .aura-trust__item {
     padding: 5rem 4rem;
     text-align: center;
     position: relative;
   }
 
-  .aura-lux-trust__item:not(:last-child)::after {
+  .aura-trust__item:not(:last-child)::after {
     content: '';
     position: absolute;
     right: 0;
     top: 25%;
     height: 50%;
     width: 1px;
-    background: rgba(var(--color-foreground), 0.08);
+    background: rgba(245, 245, 240, 0.06);
   }
 
-  .aura-lux-trust__icon {
-    width: 2.4rem;
-    height: 2.4rem;
+  .aura-trust__icon {
+    width: 2.2rem;
+    height: 2.2rem;
     margin: 0 auto 2.5rem;
-    color: rgb(var(--color-accent));
-    opacity: 0.8;
+    color: #C5A059;
+    opacity: 0.7;
   }
 
-  .aura-lux-trust__heading {
-    font-family: var(--font-heading-family);
-    font-size: 1.2rem;
-    letter-spacing: 0.35rem;
+  .aura-trust__heading {
+    font-family: var(--font-body-family);
+    font-size: 1.1rem;
+    letter-spacing: 0.4rem;
     text-transform: uppercase;
     margin-bottom: 1.2rem;
-    font-weight: 500;
-    color: rgb(var(--color-foreground));
+    font-weight: 600;
+    color: #F5F5F0;
   }
 
-  .aura-lux-trust__text {
-    font-size: 1.35rem;
-    opacity: 0.55;
+  .aura-trust__text {
+    font-size: 1.3rem;
+    color: rgba(245, 245, 240, 0.45);
     line-height: 1.7;
-    max-width: 28rem;
+    max-width: 26rem;
     margin: 0 auto;
   }
 
   @media screen and (max-width: 749px) {
-    .aura-lux-trust__inner {
+    .aura-trust__inner {
       grid-template-columns: 1fr;
     }
-    .aura-lux-trust__item:not(:last-child)::after {
-      right: 15%;
+    .aura-trust__item:not(:last-child)::after {
+      right: 20%;
       top: auto;
       bottom: 0;
       height: 1px;
-      width: 70%;
-      background: rgba(var(--color-foreground), 0.06);
+      width: 60%;
+      background: rgba(245, 245, 240, 0.04);
     }
-    .aura-lux-trust__item {
-      padding: 3.5rem 2rem;
+    .aura-trust__item {
+      padding: 3rem 2rem;
     }
   }
 {%- endstyle -%}
 
-<section class="aura-lux-trust-{{ section.id }}">
+<section class="aura-trust">
   <div class="page-width">
-    <div class="aura-lux-trust__inner">
+    <div class="aura-trust__inner">
       {%- for block in section.blocks -%}
-        <div class="aura-lux-trust__item" {{ block.shopify_attributes }}>
+        <div class="aura-trust__item" {{ block.shopify_attributes }}>
           {%- if block.settings.icon_svg != blank -%}
-             <div class="aura-lux-trust__icon">{{ block.settings.icon_svg }}</div>
+             <div class="aura-trust__icon">{{ block.settings.icon_svg }}</div>
           {%- else -%}
-             <div class="aura-lux-trust__icon">
+             <div class="aura-trust__icon">
                 {% render 'icon-checkmark' %}
              </div>
           {%- endif -%}
 
-          <h3 class="aura-lux-trust__heading">{{ block.settings.title | escape }}</h3>
-          <p class="aura-lux-trust__text">{{ block.settings.text | escape }}</p>
+          <h3 class="aura-trust__heading">{{ block.settings.title | escape }}</h3>
+          <p class="aura-trust__text">{{ block.settings.text | escape }}</p>
         </div>
       {%- endfor -%}
     </div>
