@@ -7,7 +7,6 @@
   .aura-hero__grid {
     display: grid;
     grid-template-columns: 1fr;
-    min-height: 80vh;
   }
 
   /* ── Text Column ── */
@@ -59,52 +58,65 @@
   /* ── Image Column ── */
   .aura-hero__image-col {
     position: relative;
+    background-color: #efebe5;
+    overflow: hidden;
+  }
+
+  .aura-hero__image-col img,
+  .aura-hero__image-col .aura-hero__image {
+    display: block;
+    width: 100%;
+    min-height: 40rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Placeholder: styled to look intentional, not empty */
+  .aura-hero__placeholder {
+    min-height: 50rem;
+    background: linear-gradient(160deg, #e8e4dc 0%, #d8d2c8 30%, #e0dad2 60%, #ede9e3 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
-    background-color: #f0ece6;
   }
 
-  .aura-hero__image {
-    width: 100%;
-    max-width: 72rem;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-  }
-
-  /* Placeholder */
-  .aura-hero__placeholder {
-    width: 100%;
-    max-width: 72rem;
-    aspect-ratio: 1/1;
-    background: linear-gradient(135deg, #e8e4de 0%, #ddd8d0 50%, #e8e4de 100%);
-    border-radius: 8px;
+  .aura-hero__placeholder-text {
+    text-align: center;
+    opacity: 0.25;
+    font-size: 1.3rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
   }
 
   /* ── Desktop: side by side ── */
   @media screen and (min-width: 990px) {
     .aura-hero__grid {
       grid-template-columns: 5fr 6fr;
-      min-height: 88vh;
     }
 
     .aura-hero__text-col {
-      padding: 6rem 4rem 6rem 8rem;
+      padding: 8rem 5rem 8rem 8rem;
+      min-height: 80vh;
     }
 
-    .aura-hero__image-col {
-      padding: 3rem;
-    }
-
-    .aura-hero__image {
-      max-width: none;
+    .aura-hero__image-col img,
+    .aura-hero__image-col .aura-hero__image {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
+      min-height: 0;
       object-fit: cover;
       object-position: center;
-      border-radius: 10px;
+    }
+
+    .aura-hero__placeholder {
+      position: absolute;
+      inset: 0;
+      min-height: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -112,38 +124,40 @@
   @media screen and (min-width: 750px) and (max-width: 989px) {
     .aura-hero__grid {
       grid-template-columns: 1fr 1fr;
-      min-height: 70vh;
     }
     .aura-hero__text-col {
-      padding: 4rem 3rem;
+      padding: 5rem 3rem;
+      min-height: 60vh;
     }
-    .aura-hero__image-col {
-      padding: 2rem;
-    }
-    .aura-hero__image {
+    .aura-hero__image-col img,
+    .aura-hero__image-col .aura-hero__image {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
+      min-height: 0;
       object-fit: cover;
       object-position: center;
-      border-radius: 8px;
+    }
+    .aura-hero__placeholder {
+      position: absolute;
+      inset: 0;
+      min-height: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 
   /* ── Mobile: stacked, image on top ── */
   @media screen and (max-width: 749px) {
-    .aura-hero__grid {
-      min-height: auto;
-    }
     .aura-hero__image-col {
       order: -1;
-      padding: 1.5rem 1.5rem 0;
-      background-color: transparent;
     }
-    .aura-hero__image {
-      border-radius: 10px;
+    .aura-hero__image-col img {
+      min-height: 32rem;
     }
     .aura-hero__text-col {
-      padding: 3rem 2.4rem 5rem;
+      padding: 3.5rem 2.4rem 5rem;
       text-align: center;
     }
     .aura-hero__text {
@@ -157,6 +171,9 @@
     }
     .aura-hero__description {
       font-size: 1.4rem;
+    }
+    .aura-hero__placeholder {
+      min-height: 32rem;
     }
   }
 {%- endstyle -%}
@@ -204,7 +221,9 @@
             fetchpriority: 'high'
         }}
       {%- else -%}
-        <div class="aura-hero__placeholder"></div>
+        <div class="aura-hero__placeholder">
+          <span class="aura-hero__placeholder-text">Select hero image in Customize</span>
+        </div>
       {%- endif -%}
     </div>
   </div>
