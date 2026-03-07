@@ -1,5 +1,5 @@
 <style>
-  /* ── Header: static, light gray, compact ── */
+  /* ── Header: static, light gray, ULTRA-COMPACT ── */
   .shopify-section-group-header-group {
     position: relative;
     z-index: 100;
@@ -10,17 +10,19 @@
     display: none !important;
   }
 
-  /* ── Light gray header ── */
+  /* ── Light gray, ultra-thin header ── */
   .section-header,
   .section-header .header-wrapper,
   .section-header .header {
     background-color: #f0f0f0 !important;
-    border-bottom: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
   }
 
-  .section-header .header {
-    padding-top: 0.6rem !important;
-    padding-bottom: 0.6rem !important;
+  .section-header .header,
+  .section-header .header-wrapper {
+    padding: 0 2.5rem !important;
+    min-height: 0 !important;
+    gap: 0.8rem !important;
   }
 
   /* ── Disable sticky ── */
@@ -29,24 +31,39 @@
     top: auto !important;
   }
 
-  /* ── Clean sans-serif nav ── */
+  /* ── Compact brand name ── */
   .section-header .header__heading-link,
   .section-header .header__heading {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
-    font-size: 1.3rem !important;
+    font-size: 1.15rem !important;
     font-weight: 600 !important;
-    letter-spacing: 0.06em !important;
+    letter-spacing: 0.08em !important;
     color: #1a1a1a !important;
     text-transform: uppercase;
+    line-height: 1 !important;
   }
 
+  .section-header .header__heading-link {
+    padding: 0.7rem 0 !important;
+  }
+
+  .section-header .header__heading,
+  .section-header .header__heading .h2 {
+    font-size: 1.15rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+
+  /* ── Compact nav items ── */
   .section-header .header__menu-item {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
-    font-size: 1.2rem !important;
+    font-size: 1.05rem !important;
     font-weight: 400 !important;
     letter-spacing: 0 !important;
-    color: rgba(26, 26, 26, 0.65) !important;
+    color: rgba(26, 26, 26, 0.6) !important;
     transition: color 0.2s ease !important;
+    padding: 0.5rem 0 !important;
+    line-height: 1 !important;
   }
 
   .section-header .header__menu-item:hover {
@@ -58,17 +75,25 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
   }
 
-  /* ── Icons ── */
+  /* ── Compact icons ── */
+  .section-header .header__icon {
+    padding: 0.4rem !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+  }
+
   .section-header .header__icon,
   .section-header .header__icon .svg-wrapper,
   .section-header .header__icon svg {
-    color: rgba(26, 26, 26, 0.5) !important;
+    color: rgba(26, 26, 26, 0.4) !important;
   }
 
   .section-header .header__icon svg {
-    stroke: rgba(26, 26, 26, 0.5);
-    width: 1.8rem;
-    height: 1.8rem;
+    stroke: rgba(26, 26, 26, 0.4);
+    width: 1.5rem !important;
+    height: 1.5rem !important;
   }
 
   .section-header .header__icon:hover svg {
@@ -78,7 +103,20 @@
   .section-header .cart-count-bubble {
     background-color: #1a1a1a !important;
     color: #ffffff !important;
-    font-size: 0.75rem !important;
+    font-size: 0.65rem !important;
+  }
+
+  /* ── Compress drawer toggle ── */
+  .section-header header-drawer {
+    margin-left: -0.3rem !important;
+  }
+  .section-header header-drawer .header__icon {
+    padding: 0.3rem !important;
+  }
+
+  /* ── Compress nav list gap ── */
+  .section-header .header__inline-menu .list-menu {
+    gap: 0.4rem !important;
   }
 </style>
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
