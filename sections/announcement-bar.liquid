@@ -1,14 +1,25 @@
 <style>
+  /* ── Floating header group over hero ── */
+  .shopify-section-group-header-group {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+
+  /* ── Ultra-thin black top bar ── */
   .utility-bar {
-    padding-top: 0.6rem !important;
-    padding-bottom: 0.6rem !important;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
     min-height: auto !important;
+    border-bottom: none !important;
   }
   .utility-bar .announcement-bar__message {
     font-family: var(--font-body-family);
-    font-size: 1rem !important;
-    letter-spacing: 0.35em;
-    font-weight: 500;
+    font-size: 0.9rem !important;
+    letter-spacing: 0.4em;
+    font-weight: 400;
     margin: 0;
     line-height: 1;
   }
@@ -17,6 +28,18 @@
   }
   .localization-wrapper:empty {
     display: none;
+  }
+
+  /* ── Make header transparent so it floats over the hero ── */
+  .section-header {
+    background: transparent !important;
+  }
+  .section-header .header-wrapper {
+    background: transparent !important;
+  }
+  .section-header .header {
+    background: transparent !important;
+    border-bottom: none !important;
   }
 </style>
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
