@@ -1,29 +1,62 @@
 {%- style -%}
   .aura-hero {
-    background-color: #f9f9f7;
+    position: relative;
+    width: 100%;
+    min-height: 85vh;
     overflow: hidden;
-  }
-
-  .aura-hero__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  /* ── Text Column ── */
-  .aura-hero__text-col {
+    background-color: #efebe5;
     display: flex;
     align-items: center;
-    padding: 6rem 2.5rem;
+  }
+
+  /* ── Full-bleed Image Layer ── */
+  .aura-hero__image-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .aura-hero__image-layer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 65% center;
+    display: block;
+  }
+
+  /* ── Subtle left-side gradient for text readability ── */
+  .aura-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      rgba(249, 249, 247, 0.82) 0%,
+      rgba(249, 249, 247, 0.6) 30%,
+      rgba(249, 249, 247, 0.15) 55%,
+      transparent 70%
+    );
+  }
+
+  /* ── Text Content ── */
+  .aura-hero__content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 140rem;
+    margin: 0 auto;
+    padding: 0 5rem;
   }
 
   .aura-hero__text {
-    max-width: 48rem;
+    max-width: 44rem;
   }
 
   .aura-hero__label {
     display: inline-block;
-    font-size: 1.15rem;
-    letter-spacing: 0.18em;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 500;
     color: #1a1a1a;
@@ -32,10 +65,10 @@
   }
 
   .aura-hero__heading {
-    font-size: clamp(2.8rem, 4vw, 4.4rem);
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-    margin: 0 0 1.8rem;
+    font-size: clamp(2.8rem, 4vw, 4.2rem);
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.6rem;
     font-weight: 400;
     color: #1a1a1a;
   }
@@ -45,126 +78,61 @@
     line-height: 1.75;
     color: #1a1a1a;
     opacity: 0.5;
-    max-width: 38rem;
-    margin: 0 0 3rem;
+    max-width: 36rem;
+    margin: 0 0 2.8rem;
   }
 
   .aura-hero__actions {
     display: flex;
-    gap: 1.2rem;
+    gap: 1rem;
     flex-wrap: wrap;
   }
 
-  /* ── Image Column ── */
-  .aura-hero__image-col {
-    position: relative;
-    background-color: #efebe5;
-    overflow: hidden;
-  }
-
-  .aura-hero__image-col img,
-  .aura-hero__image-col .aura-hero__image {
-    display: block;
-    width: 100%;
-    min-height: 40rem;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  /* Placeholder: styled to look intentional, not empty */
+  /* ── Placeholder state ── */
   .aura-hero__placeholder {
-    min-height: 50rem;
-    background: linear-gradient(160deg, #e8e4dc 0%, #d8d2c8 30%, #e0dad2 60%, #ede9e3 100%);
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #e8e4dc 0%, #d8d2c8 40%, #e2ddd5 100%);
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .aura-hero__placeholder-text {
-    text-align: center;
-    opacity: 0.25;
-    font-size: 1.3rem;
+    opacity: 0.2;
+    font-size: 1.2rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     font-weight: 500;
   }
 
-  /* ── Desktop: side by side ── */
+  /* ── Desktop ── */
   @media screen and (min-width: 990px) {
-    .aura-hero__grid {
-      grid-template-columns: 5fr 6fr;
+    .aura-hero {
+      min-height: 90vh;
     }
-
-    .aura-hero__text-col {
-      padding: 8rem 5rem 8rem 8rem;
-      min-height: 80vh;
-    }
-
-    .aura-hero__image-col img,
-    .aura-hero__image-col .aura-hero__image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      min-height: 0;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .aura-hero__placeholder {
-      position: absolute;
-      inset: 0;
-      min-height: 0;
-      width: 100%;
-      height: 100%;
+    .aura-hero__content {
+      padding: 0 8rem;
     }
   }
 
-  /* ── Tablet ── */
-  @media screen and (min-width: 750px) and (max-width: 989px) {
-    .aura-hero__grid {
-      grid-template-columns: 1fr 1fr;
-    }
-    .aura-hero__text-col {
-      padding: 5rem 3rem;
-      min-height: 60vh;
-    }
-    .aura-hero__image-col img,
-    .aura-hero__image-col .aura-hero__image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      min-height: 0;
-      object-fit: cover;
-      object-position: center;
-    }
-    .aura-hero__placeholder {
-      position: absolute;
-      inset: 0;
-      min-height: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  /* ── Mobile: stacked, image on top ── */
+  /* ── Mobile ── */
   @media screen and (max-width: 749px) {
-    .aura-hero__image-col {
-      order: -1;
+    .aura-hero {
+      min-height: 75vh;
+      align-items: flex-end;
     }
-    .aura-hero__image-col img {
-      min-height: 32rem;
+    .aura-hero__content {
+      padding: 0 2.4rem 5rem;
     }
-    .aura-hero__text-col {
-      padding: 3.5rem 2.4rem 5rem;
-      text-align: center;
-    }
-    .aura-hero__text {
-      margin: 0 auto;
-    }
-    .aura-hero__actions {
-      justify-content: center;
+    .aura-hero__overlay {
+      background: linear-gradient(
+        to top,
+        rgba(249, 249, 247, 0.9) 0%,
+        rgba(249, 249, 247, 0.65) 35%,
+        rgba(249, 249, 247, 0.1) 60%,
+        transparent 75%
+      );
     }
     .aura-hero__heading {
       font-size: clamp(2.4rem, 7vw, 3rem);
@@ -172,59 +140,57 @@
     .aura-hero__description {
       font-size: 1.4rem;
     }
-    .aura-hero__placeholder {
-      min-height: 32rem;
+    .aura-hero__image-layer img {
+      object-position: 55% center;
     }
   }
 {%- endstyle -%}
 
 <section class="aura-hero">
-  <div class="aura-hero__grid">
-    <div class="aura-hero__text-col">
-      <div class="aura-hero__text">
-        {%- if section.settings.label != blank -%}
-          <span class="aura-hero__label">{{ section.settings.label | escape }}</span>
-        {%- endif -%}
-
-        {%- if section.settings.heading != blank -%}
-          <h1 class="aura-hero__heading">{{ section.settings.heading }}</h1>
-        {%- endif -%}
-
-        {%- if section.settings.text != blank -%}
-          <div class="aura-hero__description">{{ section.settings.text }}</div>
-        {%- endif -%}
-
-        <div class="aura-hero__actions">
-          {%- if section.settings.button_label != blank -%}
-            <a href="{{ section.settings.button_link }}" class="button button--primary">
-              {{ section.settings.button_label | escape }}
-            </a>
-          {%- endif -%}
-          {%- if section.settings.button_label_2 != blank -%}
-            <a href="{{ section.settings.button_link_2 }}" class="button button--secondary">
-              {{ section.settings.button_label_2 | escape }}
-            </a>
-          {%- endif -%}
-        </div>
-      </div>
+  {%- if section.settings.image != blank -%}
+    <div class="aura-hero__image-layer">
+      {{
+        section.settings.image
+        | image_url: width: 3840
+        | image_tag:
+          loading: 'eager',
+          widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+          fetchpriority: 'high'
+      }}
     </div>
+    <div class="aura-hero__overlay"></div>
+  {%- else -%}
+    <div class="aura-hero__placeholder">
+      <span class="aura-hero__placeholder-text">Select hero image in Customize</span>
+    </div>
+  {%- endif -%}
 
-    <div class="aura-hero__image-col">
-      {%- if section.settings.image != blank -%}
-        {{
-          section.settings.image
-          | image_url: width: 2000
-          | image_tag:
-            loading: 'eager',
-            class: 'aura-hero__image',
-            widths: '375, 550, 750, 1100, 1500, 2000',
-            fetchpriority: 'high'
-        }}
-      {%- else -%}
-        <div class="aura-hero__placeholder">
-          <span class="aura-hero__placeholder-text">Select hero image in Customize</span>
-        </div>
+  <div class="aura-hero__content">
+    <div class="aura-hero__text">
+      {%- if section.settings.label != blank -%}
+        <span class="aura-hero__label">{{ section.settings.label | escape }}</span>
       {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h1 class="aura-hero__heading">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <div class="aura-hero__description">{{ section.settings.text }}</div>
+      {%- endif -%}
+
+      <div class="aura-hero__actions">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link }}" class="button button--primary">
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          <a href="{{ section.settings.button_link_2 }}" class="button button--secondary">
+            {{ section.settings.button_label_2 | escape }}
+          </a>
+        {%- endif -%}
+      </div>
     </div>
   </div>
 </section>
