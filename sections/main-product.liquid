@@ -31,90 +31,86 @@
       padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     }
 
-    /* Product Info Container */
     .product__info-container {
-      padding-top: 2rem;
+      padding-top: 1rem;
     }
 
-    /* Product Title */
     .product__title h1,
     .product__title .h1 {
-      font-size: calc(var(--font-heading-scale) * 3.2rem);
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      margin-bottom: 1rem;
+      font-size: clamp(2.4rem, 3.5vw, 3.2rem);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
     }
 
-    /* Product Price */
     .price__container {
-      margin-top: 0.8rem;
+      margin-top: 0.5rem;
     }
     .price-item--regular,
     .price-item--sale {
       font-family: var(--font-heading-family);
-      font-size: 2.2rem;
-      letter-spacing: -0.02em;
+      font-size: 2rem;
+      letter-spacing: -0.01em;
       font-weight: 400;
     }
 
-    /* Variant Picker */
     .product-form__input label {
-      font-size: 1.1rem;
-      letter-spacing: 0.3rem;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      font-weight: 600;
-      opacity: 0.5;
+      font-weight: 500;
+      opacity: 0.45;
       margin-bottom: 1rem;
     }
 
-    /* Buy Button */
     .product-form__buttons .button {
-      padding: 1.6rem 4rem;
-      font-size: 1.2rem;
-      letter-spacing: 0.25rem;
-      min-height: 5.4rem;
+      border-radius: 100px;
+      padding: 1.4rem 3.2rem;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      min-height: 5rem;
+      text-transform: none;
     }
 
     .shopify-payment-button .shopify-payment-button__button--unbranded {
-      padding: 1.6rem 4rem;
-      font-size: 1.2rem;
-      letter-spacing: 0.25rem;
-      min-height: 5.4rem;
+      border-radius: 100px;
+      padding: 1.4rem 3.2rem;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      min-height: 5rem;
+      text-transform: none;
     }
 
-    /* Collapsible Tabs / Accordion */
     .product__accordion .accordion__title {
       font-family: var(--font-body-family);
-      font-size: 1.2rem;
-      letter-spacing: 0.25rem;
-      text-transform: uppercase;
+      font-size: 1.3rem;
+      letter-spacing: 0.06em;
+      text-transform: none;
       font-weight: 500;
     }
 
     .product__accordion summary {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-      border-top: 1px solid rgba(var(--color-foreground), 0.06);
+      padding-top: 1.8rem;
+      padding-bottom: 1.8rem;
+      border-top: 1px solid rgba(var(--color-foreground), 0.08);
     }
 
     .product__accordion .accordion__content {
       font-size: 1.45rem;
-      line-height: 1.85;
-      opacity: 0.7;
+      line-height: 1.8;
+      opacity: 0.6;
     }
 
-    /* Description */
     .product__description {
-      font-size: 1.55rem;
-      line-height: 1.85;
-      opacity: 0.75;
-      margin-top: 2rem;
+      font-size: 1.5rem;
+      line-height: 1.8;
+      opacity: 0.65;
+      margin-top: 1.5rem;
     }
 
-    /* Quantity */
     .quantity__input {
       font-size: 1.3rem;
-      letter-spacing: 0.05em;
+      letter-spacing: 0;
     }
 
     @media screen and (min-width: 750px) {
@@ -123,15 +119,15 @@
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
       .product__info-container {
-        padding-left: 6rem;
+        padding-left: 5rem;
       }
       .product__title h1,
       .product__title .h1 {
-        font-size: calc(var(--font-heading-scale) * 4rem);
+        font-size: clamp(2.8rem, 3vw, 3.6rem);
       }
       .price-item--regular,
       .price-item--sale {
-        font-size: 2.6rem;
+        font-size: 2.2rem;
       }
     }
   {%- endstyle -%}

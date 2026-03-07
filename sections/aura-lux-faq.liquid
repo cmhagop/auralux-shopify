@@ -2,53 +2,41 @@
   .aura-faq {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-    background-color: #111111;
-    color: #F5F5F0;
-    position: relative;
-  }
-
-  .aura-faq::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.12), transparent);
+    background-color: rgb(var(--color-background));
   }
 
   .aura-faq__header {
     text-align: center;
-    margin-bottom: 8rem;
+    margin-bottom: 6rem;
   }
 
   .aura-faq__label {
     display: block;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    letter-spacing: 0.5rem;
-    font-size: 1rem;
-    color: #C5A059;
-    margin-bottom: 2rem;
-    font-weight: 600;
+    font-weight: 500;
+    opacity: 0.4;
+    margin-bottom: 1.5rem;
   }
 
   .aura-faq__heading {
+    font-size: clamp(2.4rem, 3vw, 3.4rem);
+    letter-spacing: -0.02em;
     margin-bottom: 0;
-    letter-spacing: -0.03em;
-    color: #F5F5F0;
   }
 
   .aura-faq__container {
-    max-width: 75rem;
+    max-width: 70rem;
     margin: 0 auto;
   }
 
   .aura-faq__item {
-    border-bottom: 1px solid rgba(245, 245, 240, 0.05);
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
   }
 
   .aura-faq__item:first-child {
-    border-top: 1px solid rgba(245, 245, 240, 0.05);
+    border-top: 1px solid rgba(var(--color-foreground), 0.08);
   }
 
   .aura-faq__question {
@@ -56,57 +44,50 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 3rem 0;
+    padding: 2.5rem 0;
     background: none;
     border: none;
     cursor: pointer;
     text-align: left;
     font-family: var(--font-body-family);
-    font-size: 1.55rem;
-    letter-spacing: 0.02em;
-    color: #F5F5F0;
-    transition: opacity 0.3s ease;
+    font-size: 1.5rem;
+    letter-spacing: 0;
+    color: rgb(var(--color-foreground));
+    transition: opacity 0.25s ease;
     font-weight: 500;
   }
 
   .aura-faq__question:hover {
-    opacity: 0.6;
+    opacity: 0.55;
   }
 
   .aura-faq__icon {
-    width: 1rem;
-    height: 1rem;
-    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    width: 1.6rem;
+    height: 1.6rem;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0.3;
     flex-shrink: 0;
     margin-left: 2rem;
-    color: #C5A059;
   }
 
   .aura-faq__item[open] .aura-faq__icon {
-    transform: rotate(180deg);
+    transform: rotate(45deg);
   }
 
   .aura-faq__answer {
-    padding-bottom: 3.5rem;
-    font-size: 1.5rem;
-    line-height: 1.9;
-    color: rgba(245, 245, 240, 0.5);
-    max-width: 60rem;
-    animation: faqReveal 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  @keyframes faqReveal {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
+    padding-bottom: 2.5rem;
+    font-size: 1.45rem;
+    line-height: 1.8;
+    opacity: 0.55;
+    max-width: 58rem;
   }
 {%- endstyle -%}
 
 <section class="aura-faq">
   <div class="page-width">
     <div class="aura-faq__header">
-       <span class="aura-faq__label">Common Inquiries</span>
-       <h2 class="aura-faq__heading h1">{{ section.settings.heading | escape }}</h2>
+      <span class="aura-faq__label">FAQ</span>
+      <h2 class="aura-faq__heading">{{ section.settings.heading | escape }}</h2>
     </div>
 
     <div class="aura-faq__container">
@@ -114,7 +95,17 @@
         <details class="aura-faq__item" {{ block.shopify_attributes }}>
           <summary class="aura-faq__question">
             <span>{{ block.settings.question | escape }}</span>
-            <span class="aura-faq__icon">{% render 'icon-caret' %}</span>
+            <span class="aura-faq__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </span>
           </summary>
           <div class="aura-faq__answer">
             {{ block.settings.answer }}
@@ -133,7 +124,7 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Elegance Explained"
+      "default": "Common questions"
     },
     {
       "type": "range",
@@ -171,7 +162,7 @@
           "type": "richtext",
           "id": "answer",
           "label": "Answer",
-          "default": "<p>We offer a complimentary sizing kit for all orders. Alternatively, you can visit our sizing guide for detailed instructions on measuring at home.</p>"
+          "default": "<p>We offer a complimentary sizing kit with every order. You can also visit our sizing guide for detailed instructions on measuring at home.</p>"
         }
       ]
     }
@@ -181,8 +172,20 @@
       "name": "Aura Lux FAQ",
       "blocks": [
         { "type": "faq_item" },
-        { "type": "faq_item", "settings": { "question": "What is the delivery timeline?", "answer": "<p>Each piece is handcrafted to order. Standard delivery takes 2-4 weeks, ensuring the highest level of detail for your Aura Ring.</p>" } },
-        { "type": "faq_item", "settings": { "question": "Are your materials ethically sourced?", "answer": "<p>Sustainability is at the core of Aura Lux. We use 100% recycled precious metals and conflict-free diamonds certified by the Kimberley Process.</p>" } }
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the delivery timeline?",
+            "answer": "<p>Each piece is crafted to order. Standard delivery takes 2–4 weeks to ensure the highest quality.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are your materials ethically sourced?",
+            "answer": "<p>Yes. We use 100% recycled precious metals and conflict-free materials certified by the Kimberley Process.</p>"
+          }
+        }
       ]
     }
   ]

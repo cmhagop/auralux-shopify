@@ -2,68 +2,42 @@
   .aura-trust {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-    background-color: #0A0A0A;
-    color: #F5F5F0;
-    position: relative;
+    background-color: #F2F2F0;
   }
-
-  .aura-trust::before,
-  .aura-trust::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.12), transparent);
-  }
-  .aura-trust::before { top: 0; }
-  .aura-trust::after { bottom: 0; }
 
   .aura-trust__inner {
-    max-width: 110rem;
+    max-width: 100rem;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
+    gap: 2rem;
   }
 
   .aura-trust__item {
-    padding: 5rem 4rem;
+    padding: 4rem 3rem;
     text-align: center;
-    position: relative;
-  }
-
-  .aura-trust__item:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 25%;
-    height: 50%;
-    width: 1px;
-    background: rgba(245, 245, 240, 0.06);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
   }
 
   .aura-trust__icon {
-    width: 2.2rem;
-    height: 2.2rem;
-    margin: 0 auto 2.5rem;
-    color: #C5A059;
-    opacity: 0.7;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: 0 auto 2rem;
+    opacity: 0.35;
   }
 
   .aura-trust__heading {
-    font-family: var(--font-body-family);
-    font-size: 1.1rem;
-    letter-spacing: 0.4rem;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-    font-weight: 600;
-    color: #F5F5F0;
+    font-family: var(--font-heading-family);
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
   }
 
   .aura-trust__text {
     font-size: 1.3rem;
-    color: rgba(245, 245, 240, 0.45);
+    opacity: 0.5;
     line-height: 1.7;
     max-width: 26rem;
     margin: 0 auto;
@@ -72,14 +46,7 @@
   @media screen and (max-width: 749px) {
     .aura-trust__inner {
       grid-template-columns: 1fr;
-    }
-    .aura-trust__item:not(:last-child)::after {
-      right: 20%;
-      top: auto;
-      bottom: 0;
-      height: 1px;
-      width: 60%;
-      background: rgba(245, 245, 240, 0.04);
+      gap: 1.2rem;
     }
     .aura-trust__item {
       padding: 3rem 2rem;
@@ -93,11 +60,19 @@
       {%- for block in section.blocks -%}
         <div class="aura-trust__item" {{ block.shopify_attributes }}>
           {%- if block.settings.icon_svg != blank -%}
-             <div class="aura-trust__icon">{{ block.settings.icon_svg }}</div>
+            <div class="aura-trust__icon">{{ block.settings.icon_svg }}</div>
           {%- else -%}
-             <div class="aura-trust__icon">
-                {% render 'icon-checkmark' %}
-             </div>
+            <div class="aura-trust__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
           {%- endif -%}
 
           <h3 class="aura-trust__heading">{{ block.settings.title | escape }}</h3>
@@ -121,7 +96,7 @@
       "step": 4,
       "unit": "px",
       "label": "Top Padding",
-      "default": 60
+      "default": 80
     },
     {
       "type": "range",
@@ -131,7 +106,7 @@
       "step": 4,
       "unit": "px",
       "label": "Bottom Padding",
-      "default": 60
+      "default": 80
     }
   ],
   "blocks": [
@@ -167,21 +142,21 @@
           "type": "trust_item",
           "settings": {
             "title": "Ethical Sourcing",
-            "text": "Every diamond is conflict-free and responsibly sourced."
+            "text": "Responsibly sourced materials, always."
           }
         },
         {
           "type": "trust_item",
           "settings": {
             "title": "Lifetime Warranty",
-            "text": "Our commitment to quality lasts a lifetime."
+            "text": "Quality backed by a lifetime guarantee."
           }
         },
         {
           "type": "trust_item",
           "settings": {
-            "title": "Bespoke Design",
-            "text": "Individually handcrafted for your specific journey."
+            "title": "Precision Crafted",
+            "text": "Individually crafted for perfection."
           }
         }
       ]

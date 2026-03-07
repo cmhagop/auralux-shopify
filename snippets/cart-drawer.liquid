@@ -16,16 +16,16 @@
     visibility: hidden;
   }
   .cart-drawer .drawer__inner {
-    border-left: 1px solid rgba(var(--color-foreground), 0.06);
+    border-left: 1px solid rgba(var(--color-foreground), 0.08);
     background-color: rgb(var(--color-background));
   }
   .drawer__heading {
     font-family: var(--font-body-family);
-    letter-spacing: 0.4rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     font-size: 1.2rem;
-    font-weight: 600;
-    opacity: 0.7;
+    font-weight: 500;
+    opacity: 0.5;
   }
   .cart-item__name {
     font-family: var(--font-heading-family);
@@ -34,11 +34,11 @@
     font-weight: 400;
   }
   .cart-item__price-wrapper .price {
-    font-size: 1.3rem;
-    letter-spacing: 0.02em;
+    font-size: 1.35rem;
+    letter-spacing: 0;
   }
   .totals {
-    border-top: 1px solid rgba(var(--color-foreground), 0.06);
+    border-top: 1px solid rgba(var(--color-foreground), 0.08);
     padding-top: 2rem;
   }
   .totals__total-value {
@@ -47,10 +47,12 @@
     letter-spacing: -0.01em;
   }
   .cart-drawer .button {
-    letter-spacing: 0.25rem;
+    border-radius: 100px;
+    letter-spacing: 0.08em;
+    text-transform: none;
   }
   .cart-drawer__overlay {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.25);
   }
 </style>
 
@@ -295,7 +297,10 @@
                             {%- endif -%}
 
                             {%- if item.variant.available and item.unit_price_measurement -%}
-                              {% render 'unit-price', price: item.unit_price, measurement: item.unit_price_measurement %}
+                              {% render 'unit-price',
+                                price: item.unit_price,
+                                measurement: item.unit_price_measurement
+                              %}
                             {%- endif -%}
                           </div>
                         </td>

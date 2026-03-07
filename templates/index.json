@@ -2,16 +2,13 @@
   "sections": {
     "aura_lux_hero": {
       "type": "aura-lux-hero",
-      "settings": {
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
+      "settings": {}
     },
     "aura_lux_story": {
       "type": "aura-lux-story",
       "settings": {
-        "heading": "The Aura Philosophy",
-        "text": "<p>Aura Lux represents the intersection of timeless craftsmanship and modern minimalism. Every piece is a testament to the beauty of silence.</p>",
+        "heading": "Precision meets elegance",
+        "text": "<p>Every Aura Ring is a testament to what happens when meticulous engineering meets refined design. No compromises, no shortcuts — just quiet perfection.</p>",
         "layout": "image_first",
         "padding_top": 100,
         "padding_bottom": 100
@@ -21,23 +18,22 @@
       "type": "featured-product",
       "settings": {
         "product": "",
-        "color_scheme": "scheme-4",
-        "hide_variants_if_only_one": true,
-        "padding_top": 100,
-        "padding_bottom": 100
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "aura_lux_trust": {
       "type": "aura-lux-trust",
       "settings": {
-        "padding_top": 100,
-        "padding_bottom": 100
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "aura_lux_faq": {
       "type": "aura-lux-faq",
       "settings": {
-        "heading": "The Fine Details",
+        "heading": "Common questions",
         "padding_top": 100,
         "padding_bottom": 100
       }
@@ -51,5 +47,3 @@
     "aura_lux_faq"
   ]
 }
-
-

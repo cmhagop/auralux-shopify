@@ -2,90 +2,48 @@
   .aura-story {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-    background-color: #111111;
-    color: #F5F5F0;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .aura-story::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.15), transparent);
+    background-color: rgb(var(--color-background));
   }
 
   .aura-story__grid {
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
-    gap: 6rem;
+    gap: 4rem;
   }
 
   .aura-story__content {
-    max-width: 50rem;
+    max-width: 48rem;
   }
 
   .aura-story__label {
     display: block;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    letter-spacing: 0.5rem;
-    font-size: 1rem;
-    color: #C5A059;
-    margin-bottom: 2.5rem;
-    font-weight: 600;
+    font-weight: 500;
+    opacity: 0.4;
+    margin-bottom: 2rem;
   }
 
   .aura-story__heading {
-    margin-bottom: 3.5rem;
-    font-size: calc(var(--font-heading-scale) * 3.8rem);
-    letter-spacing: -0.04em;
-    line-height: 1.1;
-    color: #F5F5F0;
+    font-size: clamp(2.6rem, 3.5vw, 3.8rem);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 2.5rem;
   }
 
   .aura-story__text {
-    font-size: 1.7rem;
-    line-height: 1.9;
-    color: rgba(245, 245, 240, 0.6);
-    margin-bottom: 4.5rem;
-    font-weight: 400;
-  }
-
-  .aura-story__cta.button {
-    border-color: rgba(245, 245, 240, 0.2);
-    color: #F5F5F0;
-  }
-
-  .aura-story__cta.button::after {
-    background-color: #F5F5F0;
-  }
-
-  .aura-story__cta.button:hover {
-    color: #111111;
+    font-size: 1.55rem;
+    line-height: 1.8;
+    opacity: 0.6;
+    margin-bottom: 3.5rem;
   }
 
   .aura-story__image-wrap {
     position: relative;
-  }
-
-  .aura-story__image-frame {
+    border-radius: 12px;
     overflow: hidden;
-    position: relative;
-    border: 1px solid rgba(197, 160, 89, 0.08);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  }
-
-  .aura-story__image-frame::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(13, 13, 13, 0.1), transparent 50%, rgba(13, 13, 13, 0.15));
-    z-index: 1;
-    pointer-events: none;
   }
 
   .aura-story__image {
@@ -94,35 +52,30 @@
     display: block;
     object-fit: cover;
     aspect-ratio: 4 / 5;
-    transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .aura-story__image-wrap:hover .aura-story__image {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
 
   @media screen and (min-width: 990px) {
     .aura-story__grid {
-      grid-template-columns: 5fr 6fr;
+      grid-template-columns: 1fr 1fr;
       gap: 8rem;
     }
     .aura-story__grid--reverse {
-      grid-template-columns: 6fr 5fr;
+      direction: rtl;
     }
-    .aura-story__grid--reverse .aura-story__content-wrap {
-      order: 2;
-    }
-    .aura-story__grid--reverse .aura-story__image-wrap {
-      order: 1;
-    }
-    .aura-story__heading {
-      font-size: calc(var(--font-heading-scale) * 4.5rem);
+    .aura-story__grid--reverse > * {
+      direction: ltr;
     }
   }
 
   @media screen and (max-width: 749px) {
     .aura-story__image {
       aspect-ratio: 3 / 4;
+      border-radius: 10px;
     }
   }
 {%- endstyle -%}
@@ -130,19 +83,18 @@
 <section class="aura-story">
   <div class="page-width">
     <div class="aura-story__grid {% if section.settings.layout == 'text_first' %} aura-story__grid--reverse{% endif %}">
-
       <div class="aura-story__item aura-story__content-wrap">
         <div class="aura-story__content">
           {%- if section.settings.subheading != blank -%}
             <span class="aura-story__label">{{ section.settings.subheading | escape }}</span>
           {%- endif -%}
 
-          <h2 class="aura-story__heading h1">{{ section.settings.heading | escape }}</h2>
+          <h2 class="aura-story__heading">{{ section.settings.heading | escape }}</h2>
 
           <div class="aura-story__text">{{ section.settings.text }}</div>
 
           {%- if section.settings.button_label != blank -%}
-            <a href="{{ section.settings.button_link }}" class="button aura-story__cta">
+            <a href="{{ section.settings.button_link }}" class="button">
               {{ section.settings.button_label | escape }}
             </a>
           {%- endif -%}
@@ -150,18 +102,12 @@
       </div>
 
       <div class="aura-story__item aura-story__image-wrap">
-        <div class="aura-story__image-frame">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings.image | image_url: width: 1500 | image_tag:
-              class: 'aura-story__image',
-              loading: 'lazy'
-            }}
-          {%- else -%}
-            {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-          {%- endif -%}
-        </div>
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1500 | image_tag: class: 'aura-story__image', loading: 'lazy' }}
+        {%- else -%}
+          {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
       </div>
-
     </div>
   </div>
 </section>
@@ -185,19 +131,19 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Designed for Silence, Crafted for You"
+      "default": "Precision meets elegance"
     },
     {
       "type": "richtext",
       "id": "text",
       "label": "Text",
-      "default": "<p>Aura Lux was born from a desire to reclaim luxury from the loud and the ostentatious. Our jewelry speaks in whispers, celebrating the quiet strength of minimalist design and ethical craftsmanship.</p>"
+      "default": "<p>Every Aura Ring is a testament to what happens when meticulous engineering meets refined design. No compromises, no shortcuts — just quiet perfection.</p>"
     },
     {
       "type": "text",
       "id": "button_label",
       "label": "Button Label",
-      "default": "Learn More"
+      "default": "Our Story"
     },
     {
       "type": "url",
