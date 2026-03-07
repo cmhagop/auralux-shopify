@@ -1,11 +1,22 @@
 <style>
-  /* ── Floating header group over hero ── */
+  /* ── Fixed header group at top ── */
   .shopify-section-group-header-group {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 1000;
+  }
+
+  /* ── Offset body content below the fixed header ── */
+  body {
+    padding-top: 8.6rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    body {
+      padding-top: 7.4rem;
+    }
   }
 
   /* ── Ultra-thin black top bar ── */
@@ -14,6 +25,7 @@
     padding-bottom: 0.4rem !important;
     min-height: auto !important;
     border-bottom: none !important;
+    background-color: #111 !important;
   }
   .utility-bar .announcement-bar__message {
     font-family: var(--font-body-family);
@@ -22,6 +34,7 @@
     font-weight: 400;
     margin: 0;
     line-height: 1;
+    color: #f9f9f7 !important;
   }
   .utility-bar--bottom-border {
     border-bottom: none !important;
@@ -30,16 +43,40 @@
     display: none;
   }
 
-  /* ── Make header transparent so it floats over the hero ── */
+  /* ── Black header background ── */
   .section-header {
-    background: transparent !important;
+    background-color: #111 !important;
   }
   .section-header .header-wrapper {
-    background: transparent !important;
+    background-color: #111 !important;
   }
   .section-header .header {
-    background: transparent !important;
+    background-color: #111 !important;
     border-bottom: none !important;
+    color: #f9f9f7 !important;
+  }
+
+  /* ── Light text and icons on black ── */
+  .section-header .header__heading-link,
+  .section-header .header__heading,
+  .section-header .header__menu-item,
+  .section-header .header__icon,
+  .section-header .header__icon .svg-wrapper,
+  .section-header .header__icon svg,
+  .section-header a,
+  .section-header span,
+  .section-header h1,
+  .section-header h2 {
+    color: #f9f9f7 !important;
+  }
+
+  .section-header .header__icon svg {
+    stroke: #f9f9f7;
+  }
+
+  .section-header .cart-count-bubble {
+    background-color: #f9f9f7 !important;
+    color: #111 !important;
   }
 </style>
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
