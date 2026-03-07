@@ -77,25 +77,12 @@
 
 {%- style -%}
   .header {
-    padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
+    padding: 0 3rem !important;
   }
 
   .section-header {
-    position: sticky;
-    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-header {
-      margin-bottom: {{ section.settings.margin_bottom }}px;
-    }
-  }
-
-  @media screen and (min-width: 990px) {
-    .header {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
+    position: relative;
+    margin-bottom: 0;
   }
 {%- endstyle -%}
 
@@ -171,7 +158,7 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <span class="h2">AURALUX</span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -214,7 +201,7 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <span class="h2">AURALUX</span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
