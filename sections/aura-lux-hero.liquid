@@ -225,12 +225,20 @@
 
       <div class="aura-hero__actions">
         {%- if section.settings.button_label != blank -%}
-          <a href="{{ section.settings.button_link }}" class="button button--primary">
+          <a
+            href="{{ section.settings.button_link }}"
+            class="button button--primary"
+            style="background: #FF0000 !important; color: #FFFFFF !important; border: none !important; box-shadow: none !important; outline: none !important;"
+          >
             {{ section.settings.button_label | escape }}
           </a>
         {%- endif -%}
         {%- if section.settings.button_label_2 != blank -%}
-          <a href="{{ section.settings.button_link_2 }}" class="button button--secondary">
+          <a
+            href="{{ section.settings.button_link_2 }}"
+            class="button button--secondary"
+            style="background: #0000FF !important; color: #FFFFFF !important; border: none !important; box-shadow: none !important; outline: none !important;"
+          >
             {{ section.settings.button_label_2 | escape }}
           </a>
         {%- endif -%}
