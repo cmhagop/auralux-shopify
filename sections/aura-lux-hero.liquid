@@ -124,6 +124,35 @@
     outline: none !important;
   }
 
+  /* ── KILL Dawn ::before and ::after pseudo-element borders ── */
+  .aura-hero__actions .button::before,
+  .aura-hero__actions .button::after,
+  .aura-hero__actions .button--primary::before,
+  .aura-hero__actions .button--primary::after,
+  .aura-hero__actions .button--secondary::before,
+  .aura-hero__actions .button--secondary::after {
+    content: none !important;
+    display: none !important;
+    box-shadow: none !important;
+  }
+
+  .aura-hero__actions .button:hover::before,
+  .aura-hero__actions .button:hover::after,
+  .aura-hero__actions .button:focus::before,
+  .aura-hero__actions .button:focus::after,
+  .aura-hero__actions .button:focus-visible::before,
+  .aura-hero__actions .button:focus-visible::after {
+    content: none !important;
+    display: none !important;
+    box-shadow: none !important;
+  }
+
+  .aura-hero__actions .button:focus-visible,
+  .aura-hero__actions .button:focus {
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
   /* Placeholder */
   .aura-hero__placeholder {
     position: absolute;
