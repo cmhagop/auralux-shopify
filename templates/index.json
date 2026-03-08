@@ -1,14 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "aura_lux_hero": {
       "type": "aura-lux-hero",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/aura-hero-lifestyle.png",
+        "label": "AuraLux",
+        "heading": "Designed to be felt, not seen",
+        "text": "<p>The Aura Ring blends precision engineering with quiet elegance, crafted for those who value substance over noise.</p>",
+        "button_label": "Shop Now",
+        "button_link": "",
+        "button_label_2": "Learn More",
+        "button_link_2": "",
+        "color_scheme": ""
+      }
     },
     "aura_lux_story": {
       "type": "aura-lux-story",
       "settings": {
+        "subheading": "Our Philosophy",
         "heading": "Precision meets elegance",
         "text": "<p>Every Aura Ring is a testament to what happens when meticulous engineering meets refined design. No compromises, no shortcuts — just quiet perfection.</p>",
+        "button_label": "Our Story",
+        "button_link": "",
         "layout": "image_first",
         "padding_top": 100,
         "padding_bottom": 100
@@ -19,6 +41,14 @@
       "settings": {
         "product": "",
         "color_scheme": "scheme-1",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
         "padding_top": 80,
         "padding_bottom": 80
       }
