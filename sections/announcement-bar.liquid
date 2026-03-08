@@ -107,17 +107,20 @@
     font-size: 0.65rem !important;
   }
 
-  /* ── Compress drawer toggle ── */
+  /* ── Drawer toggle: centered + refined ── */
   .section-header header-drawer {
-    margin-left: -0.3rem !important;
+    margin-left: 0 !important;
+    align-self: center !important;
   }
   .section-header header-drawer .header__icon {
-    padding: 0.3rem !important;
+    padding: 0.5rem !important;
+    display: flex !important;
+    align-items: center !important;
   }
 
-  /* ── Compress nav list gap ── */
-  .section-header .header__inline-menu .list-menu {
-    gap: 0.4rem !important;
+  /* ── Hide inline nav (drawer mode used instead) ── */
+  .section-header .header__inline-menu {
+    display: none !important;
   }
 </style>
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
